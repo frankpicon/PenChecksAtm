@@ -1,11 +1,21 @@
-# 🏧 ATM Microservice — .NET 8 API + Angular 20 Frontend
+# 🏧 PenChecks ATM Microservice — .NET 8 API + Angular 20 Frontend
+This is the PenChecks ATM Application Coding Exercise.
 
-A modern CQRS-styled ATM simulation platform built with:
+This application is a modern CQRS-styled ATM simulation platform built with:
 - **Backend:** ASP.NET Core 8 Web API  
 - **Frontend:** Angular 20 (standalone, Vite, SASS)  
-- **Database:** EF Core (InMemory or SQL Server)  
-- **Architecture:** Clean Architecture / Microservice ready  
+- **Database:** EF Core (InMemory)  
+- **Architecture:** Clean Architecture / Microservice + Micro Frontend ready  
 ------------------------------------
+
+### ⚙️ Requirements 
+- Create a web-based ATM interface that supports:
+- - Deposit funds to an account
+- - Withdraw funds from an account
+- - Transfer funds between two accounts
+- The application should track account balances and transaction history
+- Single-user application (no authentication required)
+
 ### 🚀 Quick Setup and Run 
 
 ### 1. First Run the API 
