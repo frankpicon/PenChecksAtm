@@ -18,7 +18,7 @@ dotnet run
 ```bash
 cd frontend
 npm install
-ng serve
+ng serve --open
 ```
 ### 3. Have Fun!
 
