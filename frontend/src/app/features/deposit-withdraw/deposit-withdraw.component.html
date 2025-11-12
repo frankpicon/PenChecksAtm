@@ -1,0 +1,44 @@
+<div class="dw">
+  <h2 class="dw__title">
+    {{ mode === 'deposit' ? 'Deposit Funds' : 'Withdraw Funds' }}
+  </h2>
+
+  <div class="dw__mode-toggle">
+    <button
+      type="button"
+      class="dw__mode-button"
+      [class.dw__mode-button--active]="mode === 'deposit'"
+      (click)="setMode('deposit')">
+      Deposit
+    </button>
+    <button
+      type="button"
+      class="dw__mode-button"
+      [class.dw__mode-button--active]="mode === 'withdraw'"
+      (click)="setMode('withdraw')">
+      Withdraw
+    </button>
+  </div>
+
+  <form class="dw__form" (ngSubmit)="submit()">
+    <label class="dw__field">
+      <span>Amount</span>
+      <input
+        type="number"
+        min="0"
+        step="0.01"
+        [(ngModel)]="amount"
+        name="amount"
+        required />
+    </label>
+
+    <p *ngIf="error" class="dw__error">{{ error }}</p>
+
+    <button
+      type="submit"
+      class="dw__submit"
+      [disabled]="loading || !accountId">
+      {{ loading ? 'Processing...' : 'Submit' }}
+    </button>
+  </form>
+</div>

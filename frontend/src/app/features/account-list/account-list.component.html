@@ -1,0 +1,20 @@
+<div class="account-list">
+  <h2 class="account-list__title">Accounts</h2>
+
+  <ul class="account-list__items">
+    <li
+      *ngFor="let account of accounts"
+      class="account-list__item"
+      [class.account-list__item--selected]="account.id === selectedAccountId"
+      (click)="onSelect(account.id)">
+      <div class="account-list__name">{{ account.name }} ({{ account.id }})</div>
+      <div class="account-list__balance">
+        {{ account.balance | currency:'USD':'symbol' }}
+      </div>
+    </li>
+  </ul>
+
+  <p class="account-list__empty" *ngIf="accounts.length === 0">
+    No accounts found.
+  </p>
+</div>

@@ -1,0 +1,30 @@
+<div class="transaction-list">
+  <h2 class="transaction-list__title">Transaction History</h2>
+
+  <table class="transaction-list__table" *ngIf="transactions.length > 0">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Balance After</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tx of transactions">
+        <td>{{ tx.timestamp | date:'short' }}</td>
+        <td>{{ tx.type | transactionTypeLabel }}</td>
+        <td [ngClass]="tx.amount | amountSignClass">
+          {{ tx.amount | currency:'USD':'symbol' }}
+        </td>
+        <td>{{ tx.balanceAfter | currency:'USD':'symbol' }}</td>
+        <td>{{ tx.description || '-' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="transactions.length === 0" class="transaction-list__empty">
+    No transactions for this account yet.
+  </p>
+</div>

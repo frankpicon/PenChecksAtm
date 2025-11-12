@@ -1,0 +1,45 @@
+.transaction-list {
+  &__title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+
+    th,
+    td {
+      padding: 0.45rem 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    th {
+      font-weight: 500;
+      opacity: 0.85;
+    }
+
+    tbody tr:hover {
+      background: rgba(15, 23, 42, 0.8);
+    }
+  }
+
+  &__empty {
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+}
+
+.amount--positive {
+  color: #4ade80;
+}
+
+.amount--negative {
+  color: #f97373;
+}
+
+.amount--neutral {
+  color: #e5e7eb;
+}

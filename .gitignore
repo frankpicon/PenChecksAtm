@@ -1,28 +1,28 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+# ---- Global
+.DS_Store
+Thumbs.db
+*.log
 
-# Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
+# ---- Node/Angular (frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/cache/
+frontend/.eslintcache
+frontend/.vscode
 
-# Environment files
-/.env
+# ---- .NET (backend)
+backend/**/bin/
+backend/**/obj/
+backend/.vs/
+backend/**/TestResults/
+backend/**/.DS_Store
+.vs/
 
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
+# ---- Environment / secrets (adjust to your conventions)
+**/.env
+**/.env.*
+backend/**/appsettings.*.local.json
+backend/**/secrets.json
 
-# TypeScript cache
-*.tsbuildinfo
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# ---- Build artifacts
+*.zip

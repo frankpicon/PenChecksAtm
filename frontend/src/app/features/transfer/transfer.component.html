@@ -1,0 +1,45 @@
+<div class="transfer">
+  <h2 class="transfer__title">Transfer Funds</h2>
+
+  <form class="transfer__form" (ngSubmit)="submit()">
+    <label class="transfer__field">
+      <span>From Account</span>
+      <select [(ngModel)]="fromAccountId" name="fromAccountId" required>
+        <option [ngValue]="null" disabled>Choose an account...</option>
+        <option *ngFor="let acc of accounts" [ngValue]="acc.id">
+          {{ acc.name }} ({{ acc.id }})
+        </option>
+      </select>
+    </label>
+
+    <label class="transfer__field">
+      <span>To Account</span>
+      <select [(ngModel)]="toAccountId" name="toAccountId" required>
+        <option [ngValue]="null" disabled>Choose an account...</option>
+        <option *ngFor="let acc of accounts" [ngValue]="acc.id">
+          {{ acc.name }} ({{ acc.id }})
+        </option>
+      </select>
+    </label>
+
+    <label class="transfer__field">
+      <span>Amount</span>
+      <input
+        type="number"
+        min="0"
+        step="0.01"
+        [(ngModel)]="amount"
+        name="amount"
+        required />
+    </label>
+
+    <p *ngIf="error" class="transfer__error">{{ error }}</p>
+
+    <button
+      type="submit"
+      class="transfer__submit"
+      [disabled]="loading || accounts.length < 2">
+      {{ loading ? 'Transferring...' : 'Submit Transfer' }}
+    </button>
+  </form>
+</div>

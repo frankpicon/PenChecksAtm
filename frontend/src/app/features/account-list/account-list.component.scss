@@ -1,0 +1,48 @@
+.account-list {
+  &__title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    background: #020617;
+    border: 1px solid transparent;
+    transition: border-color 0.15s ease, background 0.15s ease;
+
+    &:hover {
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    &--selected {
+      border-color: #22c55e;
+      background: rgba(34, 197, 94, 0.1);
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+  }
+
+  &__balance {
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__empty {
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,63 @@
+<div class="atm-shell">
+  <header class="atm-shell__header">
+    <h1 class="atm-shell__title">ATM Dashboard</h1>
+    <button class="atm-shell__refresh" (click)="onRefresh()">↻ Refresh</button>
+  </header>
+
+  <section class="atm-shell__status" *ngIf="loading || error">
+    <p *ngIf="loading">Loading...</p>
+    <p *ngIf="error" class="atm-shell__error">{{ error }}</p>
+  </section>
+
+  <nav class="atm-shell__tabs">
+    <button
+      class="atm-shell__tab"
+      [class.atm-shell__tab--active]="activeTab === 'accounts'"
+      (click)="setTab('accounts')">
+      Accounts
+    </button>
+    <button
+      class="atm-shell__tab"
+      [class.atm-shell__tab--active]="activeTab === 'depositWithdraw'"
+      (click)="setTab('depositWithdraw')"
+      [disabled]="!selectedAccountId">
+      Deposit / Withdraw
+    </button>
+    <button
+      class="atm-shell__tab"
+      [class.atm-shell__tab--active]="activeTab === 'transfer'"
+      (click)="setTab('transfer')"
+      [disabled]="accounts.length < 2">
+      Transfer
+    </button>
+  </nav>
+
+  <main class="atm-shell__content" *ngIf="!loading && !error">
+    <app-account-list
+      [accounts]="accounts"
+      [selectedAccountId]="selectedAccountId"
+      (accountChanged)="onAccountChanged($event)">
+    </app-account-list>
+
+    <section class="atm-shell__panel" *ngIf="activeTab === 'accounts'">
+      <app-transaction-list
+        [accounts]="accounts"
+        [selectedAccountId]="selectedAccountId">
+      </app-transaction-list>
+    </section>
+
+    <section class="atm-shell__panel" *ngIf="activeTab === 'depositWithdraw'">
+      <app-deposit-withdraw
+        [accountId]="selectedAccountId"
+        (operationCompleted)="onRefresh()">
+      </app-deposit-withdraw>
+    </section>
+
+    <section class="atm-shell__panel" *ngIf="activeTab === 'transfer'">
+      <app-transfer
+        [accounts]="accounts"
+        (transferCompleted)="onRefresh()">
+      </app-transfer>
+    </section>
+  </main>
+</div>
